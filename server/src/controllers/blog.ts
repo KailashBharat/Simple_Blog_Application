@@ -65,7 +65,9 @@ export async function updateBlogPost(req: Request, res: Response) {
   const { id, update }: { id: string; update: UpdateType } = req.body;
 
   if (!id || !update)
-    return res.status(200).json({ msg: "Please fill in all the required fields" });
+    return res
+      .status(200)
+      .json({ msg: "Please fill in all the required fields" });
 
   try {
     const blogpost = await Blog.findByIdAndUpdate(id, update);
@@ -83,7 +85,9 @@ export async function deleteBlogPost(req: Request, res: Response) {
   const { id } = req.body;
 
   if (!id)
-    return res.status(200).json({ msg: "Please fill in all the required fields" });
+    return res
+      .status(200)
+      .json({ msg: "Please fill in all the required fields" });
 
   try {
     const blogpost = await Blog.deleteOne({ _id: id });
